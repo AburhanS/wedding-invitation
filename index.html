@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
 <title>Sinem &amp; Ahmet · 20.08.2026</title>
+<meta name="description" content="Düğünümüze davetlisiniz — katılımınızı bu sayfadan bildirebilirsiniz.">
+<!-- WhatsApp / sosyal medya önizleme kartı. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sinem & Ahmet · 20.08.2026">
+<meta property="og:description" content="Düğünümüze davetlisiniz — katılımınızı bu sayfadan bildirebilirsiniz.">
+<meta property="og:image" content="https://AburhanS.github.io/wedding-invitation/og.jpg">
+<meta property="og:url" content="https://AburhanS.github.io/wedding-invitation/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Ms+Madi&display=swap" rel="stylesheet">
@@ -71,6 +79,9 @@
   .datetime{font-size:clamp(19px,4vw,23px);letter-spacing:.34em;color:var(--ink-soft);
     padding-left:.34em}
   .datetime .dot{padding:0 .1em}
+  .countdown{margin-top:10px;font-size:13px;letter-spacing:.30em;text-transform:uppercase;
+    color:var(--leaf-deep);padding-left:.30em;min-height:18px}
+  .btn-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
   .divider{display:block;margin:26px auto 20px;color:var(--line);width:210px;height:auto}
   .deadline{font-style:italic;font-size:17px;color:var(--ink-soft)}
 
@@ -84,7 +95,7 @@
   .d-value small{display:block;font-size:17px;color:var(--ink-soft);margin-top:2px}
   .maps-btn{display:inline-flex;align-items:center;gap:8px;margin-top:12px;
     font-family:var(--serif);font-size:15px;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--ink);text-decoration:none;border:1px solid var(--line);
+    color:var(--ink);text-decoration:none;border:1px solid var(--line);cursor:pointer;
     border-radius:999px;padding:9px 20px 8px 22px;background:var(--card);
     transition:background .2s,border-color .2s}
   .maps-btn:hover{background:#f1f0e6;border-color:var(--ink-soft)}
@@ -213,6 +224,7 @@
   .hero>*:nth-child(4){animation-delay:.34s}
   .hero>*:nth-child(5){animation-delay:.46s}
   .hero>*:nth-child(6){animation-delay:.56s}
+  .hero>*:nth-child(7){animation-delay:.64s}
   @keyframes rise{to{opacity:1;transform:none}}
   @media (prefers-reduced-motion:reduce){
     .hero>*{animation:none;opacity:1;transform:none}
@@ -268,6 +280,7 @@
     <p class="eyebrow">Wedding of</p>
     <h1 class="names">Sinem &amp; Ahmet</h1>
     <p class="datetime"><span id="evDate">20.08.2026</span><span class="dot">·</span><span id="evTime">16.00</span></p>
+    <p class="countdown" id="countdown"></p>
 
     <svg class="divider" viewBox="0 0 220 26" fill="none" stroke="currentColor"
          stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
@@ -284,27 +297,29 @@
 
   <!-- ================= DETAILS ================= -->
   <section class="details">
-    <div>
-      <p class="d-label" data-i18n="d_date"></p>
-      <p class="d-value" id="evDate2">20.08.2026</p>
-    </div>
-    <div>
-      <p class="d-label" data-i18n="d_time"></p>
-      <p class="d-value">16.00</p>
-    </div>
     <div class="detail-addr">
       <p class="d-label" data-i18n="d_addr"></p>
       <p class="d-value">Evenementen &amp; Partycentrum Royal
         <small>Schaluinen 11A, 5111 HB Baarle-Nassau</small>
       </p>
-      <a class="maps-btn" id="mapsLink" target="_blank" rel="noopener" href="#">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/>
-          <circle cx="12" cy="10" r="2.6"/>
-        </svg>
-        <span data-i18n="d_maps"></span>
-      </a>
+      <div class="btn-row">
+        <a class="maps-btn" id="mapsLink" target="_blank" rel="noopener" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/>
+            <circle cx="12" cy="10" r="2.6"/>
+          </svg>
+          <span data-i18n="d_maps"></span>
+        </a>
+        <button type="button" class="maps-btn" onclick="downloadICS()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2"/>
+            <path d="M16 3v4M8 3v4M3 11h18M12 15v4M10 17h4"/>
+          </svg>
+          <span data-i18n="d_cal"></span>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -432,18 +447,24 @@
 <script>
 /* ayarlar */
 const CONFIG = {
-  // Google Apps Script web app adresi
+  // Google Apps Script web app adresi:
   SCRIPT_URL: "https://script.google.com/macros/s/AKfycbweJiJr7YHETkFyD9rX4F-TtAIz2-78crv2rIePm3339iylZ1fATMr2RH_kEYrpZQZe/exec",
   MAPS_URL: "https://www.google.com/maps/place/Party+Centrum+Royal/@51.4238543,4.9320892,17z/data=!3m1!4b1!4m6!3m5!1s0x47c6babd0fa853cb:0xd7ca0a3075d330ee!8m2!3d51.423851!4d4.9346641!16s%2Fg%2F11cp7k63mk",
   DATE: "20.08.2026",
   TIME: "16.00",
+  // "Takvime Ekle" için başlangıç/bitiş (UTC; 16.00–23.00 Hollanda yaz saati).
+  ICS_START: "20260820T140000Z",
+  ICS_END:   "20260820T210000Z",
 };
 
 /* metinler - TR & NL */
 const I18N = {
   tr: {
     deadline: "Yanıtınızı 19 Temmuz'a kadar bekliyoruz.",
-    d_date: "Tarih", d_time: "Saat", d_addr: "Adres", d_maps: "Yol Tarifi",
+    d_addr: "Adres", d_maps: "Yol Tarifi", d_cal: "Takvime Ekle",
+    cal_summary: "Sinem & Ahmet — Düğün",
+    countdown: "Düğüne {n} gün", countdown_1: "Düğüne 1 gün",
+    countdown_today: "Bugün! 🌿",
     r_title: "Katılımınızı Bildirin",
     f_name: "İsim Soyisim", f_name_ph: "Adınız ve soyadınız",
     f_attend: "Düğünümüze katılıyor musunuz?",
@@ -486,7 +507,10 @@ const I18N = {
   },
   nl: {
     deadline: "Wij ontvangen uw antwoord graag vóór 19 juli.",
-    d_date: "Datum", d_time: "Tijd", d_addr: "Adres", d_maps: "Routebeschrijving",
+    d_addr: "Adres", d_maps: "Routebeschrijving", d_cal: "Zet in agenda",
+    cal_summary: "Bruiloft Sinem & Ahmet",
+    countdown: "Nog {n} dagen", countdown_1: "Nog 1 dag",
+    countdown_today: "Vandaag! 🌿",
     r_title: "Laat het ons weten",
     f_name: "Voor- en achternaam", f_name_ph: "Uw voor- en achternaam",
     f_attend: "Bent u aanwezig op onze bruiloft?",
@@ -529,7 +553,7 @@ const I18N = {
   }
 };
 
-/* durum */
+/* DURUM */
 const state = {
   lang: "tr",
   attending: null,   // 'yes' | 'no'
@@ -553,8 +577,46 @@ function setLang(l){
     el.placeholder = t(el.dataset.i18nPh);
   });
   renderCount();
+  renderCountdown();
   $("formError").textContent = "";
   $("guestError").textContent = "";
+}
+
+/* geri sayım */
+function renderCountdown(){
+  const [d, m, y] = CONFIG.DATE.split(".").map(Number);
+  const target = new Date(y, m - 1, d);
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const days = Math.round((target - today) / 86400000);
+  const el = $("countdown");
+  if(days > 1)       el.textContent = t("countdown").replace("{n}", days);
+  else if(days === 1) el.textContent = t("countdown_1");
+  else if(days === 0) el.textContent = t("countdown_today");
+  else el.textContent = "";
+}
+
+/* takvime ekle */
+function downloadICS(){
+  const ics = [
+    "BEGIN:VCALENDAR", "VERSION:2.0",
+    "PRODID:-//Sinem & Ahmet//Dugun//TR",
+    "BEGIN:VEVENT",
+    "UID:sinem-ahmet-20260820@dugun",
+    "DTSTAMP:" + new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z",
+    "DTSTART:" + CONFIG.ICS_START,
+    "DTEND:" + CONFIG.ICS_END,
+    "SUMMARY:" + t("cal_summary"),
+    "LOCATION:Evenementen & Partycentrum Royal\\, Schaluinen 11A\\, 5111 HB Baarle-Nassau",
+    "URL:" + location.href.split("#")[0],
+    "END:VEVENT", "END:VCALENDAR"
+  ].join("\r\n");
+  const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "sinem-ahmet-dugun.ics";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
 }
 
 /* katılım */
@@ -762,9 +824,7 @@ async function submitForm(){
 /* başlangıç */
 $("mapsLink").href = CONFIG.MAPS_URL;
 $("evDate").textContent = CONFIG.DATE;
-$("evDate2").textContent = CONFIG.DATE;
 $("evTime").textContent = CONFIG.TIME;
-document.querySelectorAll(".details .d-value")[1].textContent = CONFIG.TIME;
 document.querySelector("footer .f-date").textContent = CONFIG.DATE;
 setLang("tr");
 </script>
