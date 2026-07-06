@@ -1,7 +1,7 @@
 /**
-  Düğün RSVP arka ucu
-  Siteden gelen cevapları Google Sheet'e yazar.
- */
+ Düğün RSVP arka ucu
+ Siteden gelen cevapları Google Sheet'e yazma kodu
+*/
 
 var SHEET_NAME = "Cevaplar";
 
@@ -19,7 +19,7 @@ function doPost(e) {
     if (sh.getLastRow() === 0) {
       sh.appendRow([
         "Zaman", "Ana İsim", "Katılım", "Kişi Sayısı",
-        "Misafirler", "Bebek", "Ulaşım", "Mesaj", "Dil"
+        "Misafirler", "Bebek", "Sandalye", "Ulaşım", "Mesaj", "Dil"
       ]);
       sh.setFrozenRows(1);
     }
@@ -31,6 +31,7 @@ function doPost(e) {
       Number(p.guestCount || 0),
       p.guests     || "",
       Number(p.babies || 0),
+      Number(p.chairs || 0),
       p.transport  || "",
       p.message    || "",
       p.lang       || ""

@@ -134,6 +134,7 @@
   .stepper .num{font-size:22px;min-width:26px;text-align:center}
   .hint{font-size:15px;font-style:italic;color:var(--ink-soft);letter-spacing:0;
     text-transform:none;margin-top:6px;display:block}
+  .g-note{text-align:center;margin:-12px 0 18px}
   .form-error{color:var(--danger);font-style:italic;font-size:16px;min-height:22px;
     margin:4px 0 10px;text-align:center}
   .primary{
@@ -386,6 +387,7 @@
   <div class="panel">
     <button class="x" onclick="closeGuests()" aria-label="Kapat">×</button>
     <h3 data-i18n="g_title"></h3>
+    <p class="hint g-note" data-i18n="g_note"></p>
     <div id="guestRows"></div>
     <button type="button" class="g-add" onclick="addRow()" data-i18n="g_add"></button>
     <p class="form-error" id="guestError"></p>
@@ -428,7 +430,7 @@
 </div>
 
 <script>
-/* AYARLAR */
+/* ayarlar */
 const CONFIG = {
   // Google Apps Script web app adresi
   SCRIPT_URL: "https://script.google.com/macros/s/AKfycbweJiJr7YHETkFyD9rX4F-TtAIz2-78crv2rIePm3339iylZ1fATMr2RH_kEYrpZQZe/exec",
@@ -437,7 +439,7 @@ const CONFIG = {
   TIME: "16.00",
 };
 
-/* METİNLER - TR / NL */
+/* metinler - TR & NL */
 const I18N = {
   tr: {
     deadline: "Yanıtınızı 19 Temmuz'a kadar bekliyoruz.",
@@ -449,8 +451,14 @@ const I18N = {
     f_guests: "Misafirler",
     f_guests_btn: "Misafir listesi",
     count_one: "1 kişi", count_many: "{n} kişi",
-    f_baby: "Bebek",
+    f_baby: "Eklediğiniz misafirlerden kaçı bebek?",
     f_baby_hint: "Kucakta oturacak, ayrı sandalye gerektirmeyen bebekler",
+    e_baby: "Bebek sayısı misafir sayısından fazla olamaz.",
+    g_note: "Bebekler dahil, gelecek herkesi ekleyin.",
+    p_calc: "Özet",
+    w_guest: ["misafir", "misafir"],
+    w_baby: ["bebek", "bebek"],
+    w_chair: ["sandalye", "sandalye"],
     f_transport: "Ulaşımınızı kendiniz sağlayabiliyor musunuz?",
     f_msg: "Çifte notunuz (isteğe bağlı)",
     f_msg_ph: "Dilerseniz bize birkaç söz bırakın...",
@@ -486,8 +494,14 @@ const I18N = {
     f_guests: "Gasten",
     f_guests_btn: "Gastenlijst",
     count_one: "1 persoon", count_many: "{n} personen",
-    f_baby: "Baby",
+    f_baby: "Hoeveel van uw gasten zijn baby's?",
     f_baby_hint: "Baby's op schoot, zonder eigen stoel",
+    e_baby: "Het aantal baby's kan niet groter zijn dan het aantal gasten.",
+    g_note: "Voeg iedereen toe die meekomt, inclusief baby's.",
+    p_calc: "Overzicht",
+    w_guest: ["gast", "gasten"],
+    w_baby: ["baby", "baby's"],
+    w_chair: ["stoel", "stoelen"],
     f_transport: "Regelt u uw eigen vervoer?",
     f_msg: "Een berichtje voor het bruidspaar (optioneel)",
     f_msg_ph: "Laat gerust een paar woorden achter...",
@@ -515,7 +529,7 @@ const I18N = {
   }
 };
 
-/* DURUM */
+/* durum */
 const state = {
   lang: "tr",
   attending: null,   // 'yes' | 'no'
@@ -558,10 +572,16 @@ function setTransport(v){
   $("formError").textContent = "";
 }
 
-/* bebek */
+/* bebek (kural: bebek ≤ misafir) */
 function stepBaby(d){
-  state.babies = Math.min(10, Math.max(0, state.babies + d));
+  state.babies = Math.min(totalGuests(), Math.max(0, state.babies + d));
   $("babyNum").textContent = state.babies;
+}
+function clampBabies(){
+  if(state.babies > totalGuests()){
+    state.babies = totalGuests();
+    $("babyNum").textContent = state.babies;
+  }
 }
 
 /* misafir sayacı */
@@ -569,6 +589,7 @@ function totalGuests(){
   return ($("mainName").value.trim() ? 1 : 0) + state.extraGuests.length;
 }
 function renderCount(){
+  clampBabies();
   const n = totalGuests();
   $("guestCount").textContent =
     n === 0 ? "–" : (n === 1 ? t("count_one") : t("count_many").replace("{n}", n));
@@ -662,11 +683,14 @@ function openPreview(){
   rows.push(sumRow(t("p_attend"), state.attending === "yes" ? t("p_yes") : t("p_no")));
   if(state.attending === "yes"){
     const names = [name + " " + t("g_you"), ...state.extraGuests];
+    if(state.babies > names.length){
+      err.textContent = t("e_baby"); return;
+    }
     const list = "<ol>" + names.map(n => "<li>" + esc(n) + "</li>").join("") + "</ol>";
     rows.push(sumRow(t("p_guests") + " · " +
       (names.length === 1 ? t("count_one") : t("count_many").replace("{n}", names.length)),
       list, true));
-    if(state.babies > 0) rows.push(sumRow(t("p_baby"), String(state.babies)));
+    rows.push(sumRow(t("p_calc"), calcLine(names.length, state.babies)));
     rows.push(sumRow(t("p_transport"),
       state.transport === "yes" ? t("p_tr_yes") : t("p_tr_no")));
   }
@@ -675,6 +699,14 @@ function openPreview(){
 
   $("summary").innerHTML = rows.join("");
   $("previewModal").classList.remove("hidden");
+}
+function calcLine(guests, babies){
+  const w = (n, key) => n + " " + t(key)[n === 1 ? 0 : 1];
+  const chairs = guests - babies;
+  const parts = [w(guests, "w_guest")];
+  if(babies > 0) parts.push(w(babies, "w_baby"));
+  parts.push(w(chairs, "w_chair"));
+  return parts.join(" · ");
 }
 function sumRow(label, value, raw){
   return '<div class="sum-item"><p class="sum-l">' + esc(label) +
@@ -705,6 +737,7 @@ async function submitForm(){
     guestCount: attendingYes ? String(names.length) : "0",
     guests: names.join(" | "),
     babies: attendingYes ? String(state.babies) : "0",
+    chairs: attendingYes ? String(names.length - state.babies) : "0",
     transport: attendingYes
       ? (state.transport === "yes" ? "Kendisi" : "Yardım gerekli") : "",
     message: $("message").value.trim(),
