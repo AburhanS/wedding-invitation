@@ -88,10 +88,24 @@ function formatLastRow(sh) {
 
 function ensureSummary(ss) {
   var s = ss.getSheetByName(SUMMARY_NAME);
-  if (!s) {
-    s = ss.insertSheet(SUMMARY_NAME, 0); // en başa koy
-    buildSummary(s);
-  }
+  if (!s) s = ss.insertSheet(SUMMARY_NAME, 0); // en başa koy
+  if (s.getRange("A1").isBlank()) buildSummary(s);
+}
+
+/* Özet boş veya bozuk kaldıysa: editörde üstteki fonksiyon seçiciden
+   "ozetiYenidenKur" seçip Run'a bas — sekmeyi silip sıfırdan kurar.
+   Sheet açıkken 🌿 Düğün menüsünden de çalıştırılabilir. */
+function ozetiYenidenKur() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var s = ss.getSheetByName(SUMMARY_NAME);
+  if (s) ss.deleteSheet(s);
+  buildSummary(ss.insertSheet(SUMMARY_NAME, 0));
+}
+
+function onOpen() {
+  SpreadsheetApp.getUi().createMenu("🌿 Düğün")
+    .addItem("Özeti yeniden kur", "ozetiYenidenKur")
+    .addToUi();
 }
 
 function buildSummary(s) {
@@ -99,15 +113,15 @@ function buildSummary(s) {
   var rows = [
     ["SİNEM & AHMET · RSVP", ""],
     ["", ""],
-    ["Gelen toplam kişi (bebek dahil)", '=SUMIF(' + C + '!C:C;"Evet";' + C + '!D:D)'],
-    ["Sandalye toplamı (Royal\u0027e verilecek)", '=SUMIF(' + C + '!C:C;"Evet";' + C + '!G:G)'],
-    ["Bebek toplamı", '=SUMIF(' + C + '!C:C;"Evet";' + C + '!F:F)'],
+    ["Gelen toplam kişi (bebek dahil)", '=SUMIF(' + C + '!C:C,"Evet",' + C + '!D:D)'],
+    ["Sandalye toplamı (Royal\u0027e verilecek)", '=SUMIF(' + C + '!C:C,"Evet",' + C + '!G:G)'],
+    ["Bebek toplamı", '=SUMIF(' + C + '!C:C,"Evet",' + C + '!F:F)'],
     ["", ""],
-    ["Evet diyen aile", '=COUNTIF(' + C + '!C:C;"Evet")'],
-    ["Hayır diyen aile", '=COUNTIF(' + C + '!C:C;"Hayır")'],
+    ["Evet diyen aile", '=COUNTIF(' + C + '!C:C,"Evet")'],
+    ["Hayır diyen aile", '=COUNTIF(' + C + '!C:C,"Hayır")'],
     ["Toplam yanıt", '=COUNTA(' + C + '!B:B)-1'],
     ["", ""],
-    ["Ulaşımda yardım isteyen aile", '=COUNTIF(' + C + '!H:H;"Yardım gerekli")'],
+    ["Ulaşımda yardım isteyen aile", '=COUNTIF(' + C + '!H:H,"Yardım gerekli")'],
   ];
   s.getRange(1, 1, rows.length, 2).setValues(rows);
 
