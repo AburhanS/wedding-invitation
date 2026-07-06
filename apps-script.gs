@@ -93,7 +93,7 @@ function ensureSummary(ss) {
 }
 
 /* Özet boş veya bozuk kaldıysa: editörde üstteki fonksiyon seçiciden
-   "ozetiYenidenKur" seçip Run'a bas — sekmeyi silip sıfırdan kurar.
+   "ozetiYenidenKur" seçip Run'a bas, sekmeyi silip sıfırdan kurar.
    Sheet açıkken 🌿 Düğün menüsünden de çalıştırılabilir. */
 function ozetiYenidenKur() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -133,7 +133,7 @@ function buildSummary(s) {
 
   // etiket sütunu
   s.getRange("A3:A11").setFontFamily("Georgia").setFontColor(C_INK);
-  // rakam sütunu — büyük, yeşil, ortalı
+  // rakam sütunu - büyük, yeşil, ortalı
   s.getRange("B3:B11").setFontFamily("Georgia").setFontSize(16)
     .setFontWeight("bold").setFontColor(C_LEAF).setHorizontalAlignment("center");
 
