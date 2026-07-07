@@ -92,22 +92,6 @@ function ensureSummary(ss) {
   if (s.getRange("A1").isBlank()) buildSummary(s);
 }
 
-/* Özet boş veya bozuk kaldıysa: editörde üstteki fonksiyon seçiciden
-   "ozetiYenidenKur" seçip Run'a bas, sekmeyi silip sıfırdan kurar.
-   Sheet açıkken 🌿 Düğün menüsünden de çalıştırılabilir. */
-function ozetiYenidenKur() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var s = ss.getSheetByName(SUMMARY_NAME);
-  if (s) ss.deleteSheet(s);
-  buildSummary(ss.insertSheet(SUMMARY_NAME, 0));
-}
-
-function onOpen() {
-  SpreadsheetApp.getUi().createMenu("🌿 Düğün")
-    .addItem("Özeti yeniden kur", "ozetiYenidenKur")
-    .addToUi();
-}
-
 function buildSummary(s) {
   var C = SHEET_NAME;
   var rows = [
@@ -133,7 +117,7 @@ function buildSummary(s) {
 
   // etiket sütunu
   s.getRange("A3:A11").setFontFamily("Georgia").setFontColor(C_INK);
-  // rakam sütunu - büyük, yeşil, ortalı
+  // rakam sütunu — büyük, yeşil, ortalı
   s.getRange("B3:B11").setFontFamily("Georgia").setFontSize(16)
     .setFontWeight("bold").setFontColor(C_LEAF).setHorizontalAlignment("center");
 
