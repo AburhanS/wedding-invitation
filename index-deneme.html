@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Sinem &amp; Ahmet · 20.08.2026</title>
+<meta name="description" content="Düğünümüze davetlisiniz — katılımınızı bu sayfadan bildirebilirsiniz.">
+<!-- WhatsApp / sosyal medya önizleme kartı. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sinem & Ahmet · 20.08.2026">
+<meta property="og:description" content="Düğünümüze davetlisiniz — katılımınızı bu sayfadan bildirebilirsiniz.">
+<meta property="og:image" content="https://sinemveahmet.love/og.jpg">
+<meta property="og:url" content="https://sinemveahmet.love/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Ms+Madi&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f5f1;
+    --card:#fbfaf5;
+    --ink:#38320d;
+    --ink-soft:#6d6636;
+    --line:#a9a87b;
+    --line-soft:#cfceb2;
+    --leaf:#8fa75f;
+    --leaf-deep:#43602b;
+    --hydrangea:#c9d8e0;
+    --danger:#8c3b2e;
+    --script:'Ms Madi','Dancing Script',cursive;
+    --serif:'Cormorant Garamond',Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--serif);
+    background:var(--paper);
+    color:var(--ink);
+    font-size:18px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+    overflow-x:hidden;
+  }
+  /* soft watercolor atmosphere - foliage green + hydrangea blue washes */
+  /* deneme: bulanık ışıklar yok — gerçek kağıt hissi */
+  /* paper grain */
+  .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.08;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+  main,header,footer{position:relative;z-index:2}
+  .art{position:relative;height:min(34vh,300px);overflow:hidden}
+  .art img{width:100%;height:100%;object-fit:cover;object-position:center 62%;display:block}
+  .art-edge{position:absolute;bottom:-1px;left:0;width:100%;height:34px;display:block}
+  header{position:absolute;top:0;left:0;right:0;z-index:5}
+
+  /* language toggle */
+  header{display:flex;justify-content:flex-end;padding:18px 22px 0}
+  .lang{display:flex;align-items:center;gap:2px;border:1px solid var(--line-soft);
+    border-radius:999px;background:var(--card);padding:3px}
+  .lang button{
+    font-family:var(--serif);font-size:14px;letter-spacing:.18em;
+    padding:5px 13px 4px 15px;border:none;background:transparent;color:var(--ink-soft);
+    border-radius:999px;cursor:pointer;transition:background .2s,color .2s;
+  }
+  .lang button.on{background:var(--ink);color:var(--paper)}
+
+  /* hero */
+  .hero{text-align:center;padding:18px 24px 10px;max-width:720px;margin:0 auto}
+  .gazebo{width:72px;height:auto;display:block;margin:0 auto 4px;color:var(--line)}
+  .eyebrow{font-style:italic;font-weight:500;font-size:clamp(20px,4.5vw,26px);
+    color:var(--ink-soft);letter-spacing:.04em}
+  .names{font-family:var(--script);font-weight:400;
+    font-size:clamp(56px,13vw,104px);line-height:1.15;margin:2px 0 6px;
+    color:var(--ink)}
+  .datetime{font-size:clamp(19px,4vw,23px);letter-spacing:.34em;color:var(--ink-soft);
+    padding-left:.34em}
+  .datetime .dot{padding:0 .1em}
+  .countdown{margin-top:8px;font-size:17px;font-style:italic;
+    color:var(--leaf-deep);min-height:20px;transform:rotate(-.6deg)}
+  .btn-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+  .chooser-panel{max-width:330px}
+  .opt{display:flex;align-items:center;justify-content:center;width:100%;
+    font-family:var(--serif);font-size:18px;font-style:italic;color:var(--ink);
+    text-decoration:none;border:1.5px solid var(--line);
+    border-radius:14px 5px 15px 6px/6px 14px 5px 16px;
+    padding:11px 10px;background:transparent;cursor:pointer;margin-bottom:12px;
+    transition:background .2s}
+  .opt:nth-child(2){border-radius:5px 14px 6px 15px/15px 6px 16px 5px;transform:rotate(.3deg)}
+  .opt:nth-child(1){transform:rotate(-.3deg)}
+  .opt:hover{background:#f1f0e6}
+  .opt:last-child{margin-bottom:2px}
+  .divider{display:block;margin:26px auto 20px;color:var(--line);width:210px;height:auto}
+  .deadline{font-style:italic;font-size:17px;color:var(--ink-soft)}
+
+  /* details */
+  .details{max-width:640px;margin:44px auto 0;padding:0 24px;
+    display:grid;grid-template-columns:1fr 1fr;gap:26px 18px;text-align:center}
+  .detail-addr{grid-column:1 / -1}
+  .d-label{font-family:var(--script);font-size:26px;
+    color:var(--leaf-deep);margin-bottom:4px}
+  .d-value{font-size:20px}
+  .d-value small{display:block;font-size:17px;color:var(--ink-soft);margin-top:2px}
+  .maps-btn{display:inline-flex;align-items:center;gap:8px;margin-top:12px;
+    font-family:var(--serif);font-size:17px;font-style:italic;
+    color:var(--ink);text-decoration:none;border:1.5px solid var(--ink-soft);cursor:pointer;
+    border-radius:15px 4px 14px 5px/5px 13px 4px 15px;padding:8px 18px;background:var(--card);
+    transition:background .2s,border-color .2s}
+  .btn-row .maps-btn:nth-child(1){transform:rotate(-.5deg)}
+  .btn-row .maps-btn:nth-child(2){transform:rotate(.4deg)}
+  .maps-btn:hover{background:#f1f0e6;border-color:var(--ink-soft)}
+  .maps-btn svg{width:14px;height:14px}
+
+  /* rsvp */
+  .rsvp{max-width:560px;margin:56px auto 70px;padding:0 20px}
+  .rsvp h2{text-align:center;font-family:var(--script);font-weight:400;font-size:34px;
+    color:var(--leaf-deep);margin-bottom:18px;transform:rotate(-1deg)}
+  .card{background:var(--card);border:1.5px solid var(--line);
+    border-radius:255px 18px 225px 18px/18px 225px 18px 255px;
+    padding:30px 26px 28px;transform:rotate(-.4deg);
+    box-shadow:2px 3px 0 rgba(56,50,13,.06)}
+  .card>*{transform:rotate(.4deg)}
+  .field{margin-bottom:24px}
+  .field:last-of-type{margin-bottom:6px}
+  label,.f-label{display:block;font-size:16px;font-style:italic;
+    color:var(--ink-soft);margin-bottom:7px}
+  .req{color:var(--leaf-deep)}
+  input[type=text],textarea{
+    width:100%;font-family:var(--serif);font-size:19px;color:var(--ink);
+    background:transparent;border:none;border-bottom:1px solid var(--line);
+    padding:6px 2px 8px;border-radius:0;transition:border-color .2s}
+  input[type=text]::placeholder,textarea::placeholder{color:#b3b096;font-style:italic}
+  input[type=text]:focus,textarea:focus{outline:none;border-bottom-color:var(--leaf-deep)}
+  textarea{resize:vertical;min-height:64px;line-height:1.5}
+  /* segmented yes/no */
+  .seg{display:flex;gap:10px}
+  .seg button{
+    flex:1;font-family:var(--serif);font-size:18px;padding:10px 6px 9px;cursor:pointer;
+    border:1.5px solid var(--line);background:transparent;color:var(--ink-soft);
+    border-radius:12px 4px 13px 5px/5px 12px 4px 14px;
+    transition:background .2s,color .2s,border-color .2s}
+  .seg button:last-child{border-radius:5px 13px 4px 12px/12px 5px 14px 4px}
+  .seg button.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+  /* guest button */
+  .guest-btn{
+    width:100%;display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--serif);font-size:18px;color:var(--ink);cursor:pointer;
+    border:1.5px dashed var(--line);background:transparent;
+    border-radius:14px 5px 15px 6px/6px 14px 5px 16px;
+    padding:13px 16px;transition:border-color .2s,background .2s}
+  .guest-btn:hover{border-color:var(--ink-soft);background:#f4f3ea}
+  .guest-count{font-size:15px;letter-spacing:.06em;color:var(--leaf-deep);
+    border:1px solid var(--line-soft);border-radius:999px;padding:3px 12px;background:var(--paper)}
+  /* baby stepper */
+  .stepper{display:flex;align-items:center;gap:16px}
+  .stepper button{
+    width:38px;height:38px;border-radius:50%;border:1px solid var(--line);
+    background:transparent;color:var(--ink);font-size:20px;font-family:var(--serif);
+    cursor:pointer;line-height:1;transition:background .2s}
+  .stepper button:hover{background:#f1f0e6}
+  .stepper .num{font-size:22px;min-width:26px;text-align:center}
+  .hint{font-size:15px;font-style:italic;color:var(--ink-soft);letter-spacing:0;
+    text-transform:none;margin-top:6px;display:block}
+  .g-note{text-align:center;margin:-12px 0 18px}
+  .form-error{color:var(--danger);font-style:italic;font-size:16px;min-height:22px;
+    margin:4px 0 10px;text-align:center}
+  .primary{
+    width:100%;font-family:var(--serif);font-size:19px;font-style:italic;
+    padding:13px 10px 12px;cursor:pointer;
+    background:var(--ink);color:var(--paper);border:1.5px solid var(--ink);
+    border-radius:17px 5px 16px 6px/6px 15px 5px 17px;transition:background .25s}
+  .primary:hover{background:#4d4517}
+  .primary:disabled{opacity:.55;cursor:default}
+  .hidden{display:none!important}
+  /* honeypot */
+  .hp{position:absolute;left:-6000px;top:-6000px;opacity:0;height:0;overflow:hidden}
+
+  /* overlays */
+  .overlay{position:fixed;inset:0;z-index:50;display:flex;align-items:center;
+    justify-content:center;padding:18px;background:rgba(56,50,13,.32);
+    backdrop-filter:blur(2px)}
+  .panel{background:var(--card);border:1.5px solid var(--line);
+    border-radius:225px 20px 255px 20px/20px 255px 20px 225px;
+    width:100%;max-width:480px;max-height:88vh;overflow-y:auto;
+    padding:26px 24px 24px;position:relative}
+  .panel h3{text-align:center;font-family:var(--script);font-weight:400;font-size:30px;
+    color:var(--leaf-deep);margin-bottom:16px}
+  .panel .x{position:absolute;top:12px;right:14px;border:none;background:none;
+    font-size:22px;color:var(--ink-soft);cursor:pointer;line-height:1;padding:6px}
+  /* guest rows */
+  .g-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .g-idx{font-size:13px;letter-spacing:.08em;color:var(--ink-soft);min-width:22px;text-align:right}
+  .g-row input{flex:1}
+  .g-row input:disabled{color:var(--ink);opacity:1;-webkit-text-fill-color:var(--ink);
+    border-bottom-style:dotted}
+  .g-you{font-size:13px;font-style:italic;color:var(--leaf-deep);white-space:nowrap}
+  .g-del{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);
+    background:transparent;color:var(--ink-soft);font-size:17px;cursor:pointer;
+    line-height:1;flex:none;transition:background .2s,color .2s}
+  .g-del:hover{background:#f6e9e6;color:var(--danger);border-color:var(--danger)}
+  .g-row input.bad{border-bottom-color:var(--danger)}
+  .g-add{display:block;margin:6px auto 18px;font-family:var(--serif);font-size:16px;
+    color:var(--leaf-deep);background:none;border:none;cursor:pointer;
+    border-bottom:1px dotted var(--leaf);padding:2px 2px 3px}
+  .panel .actions{display:flex;gap:12px;margin-top:6px}
+  .ghost{
+    flex:1;font-family:var(--serif);font-size:17px;font-style:italic;
+    padding:11px 8px;cursor:pointer;background:transparent;
+    color:var(--ink);border:1.5px solid var(--line);
+    border-radius:13px 4px 14px 5px/5px 13px 4px 15px;transition:background .2s}
+  .ghost:hover{background:#f1f0e6}
+  .panel .primary{flex:1.4;width:auto}
+  /* preview summary */
+  .sum{margin-bottom:20px}
+  .sum-item{padding:11px 2px;border-bottom:1px dotted var(--line-soft)}
+  .sum-item:last-child{border-bottom:none}
+  .sum-l{font-size:15px;font-style:italic;
+    color:var(--leaf-deep);margin-bottom:2px}
+  .sum-v{font-size:19px}
+  .sum-v ol{list-style:none;counter-reset:g}
+  .sum-v ol li{counter-increment:g;padding:2px 0}
+  .sum-v ol li::before{content:counter(g)". ";color:var(--ink-soft)}
+  /* thanks */
+  .thanks-panel{text-align:center;padding:44px 28px 46px}
+  .thanks-panel .gazebo{margin-bottom:14px}
+  .thanks-panel h3{font-size:clamp(24px,6vw,30px);font-weight:500;letter-spacing:.02em;
+    text-transform:none;color:var(--ink);padding:0;margin-bottom:10px}
+  .thanks-panel p{font-style:italic;font-size:19px;color:var(--ink-soft)}
+  .thanks-panel .names-sm{font-family:var(--script);font-size:34px;color:var(--ink);
+    margin-top:22px}
+
+  footer{text-align:center;padding:0 20px 56px}
+  footer .divider{margin-top:0}
+  footer .names-sm{font-family:var(--script);font-size:38px;color:var(--ink);
+    transform:rotate(-1.5deg);display:inline-block}
+  footer .f-date{font-size:15px;letter-spacing:.30em;color:var(--ink-soft);
+    padding-left:.30em;margin-top:2px}
+
+  /* fade-in on load */
+  .hero>*{opacity:0;transform:translateY(8px);animation:rise .8s ease forwards}
+  .hero>*:nth-child(2){animation-delay:.12s}
+  .hero>*:nth-child(3){animation-delay:.22s}
+  .hero>*:nth-child(4){animation-delay:.34s}
+  .hero>*:nth-child(5){animation-delay:.46s}
+  .hero>*:nth-child(6){animation-delay:.56s}
+  .hero>*:nth-child(7){animation-delay:.64s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){
+    .hero>*{animation:none;opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+  button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{
+    outline:2px solid var(--leaf-deep);outline-offset:2px}
+  @media (max-width:430px){
+    .details{grid-template-columns:1fr;gap:22px}
+    .card{padding:24px 18px 22px}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="art">
+  <img src="og.jpg" alt="">
+  <svg class="art-edge" viewBox="0 0 1200 44" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,44 L0,26 Q60,12 130,22 T290,18 Q360,8 430,20 T590,14 Q660,24 730,15 T880,21 Q950,9 1030,19 T1200,16 L1200,44 Z" fill="#f6f5f1"/>
+  </svg>
+</div>
+<header>
+  <nav class="lang" aria-label="Dil / Taal">
+    <button id="langTR" class="on" onclick="setLang('tr')">TR</button>
+    <button id="langNL" onclick="setLang('nl')">NL</button>
+  </nav>
+</header>
+
+<main>
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+        <p class="eyebrow">Wedding of</p>
+    <h1 class="names">Sinem &amp; Ahmet</h1>
+    <p class="datetime"><span id="evDate">20.08.2026</span><span class="dot">·</span><span id="evTime">16.00</span></p>
+    <p class="countdown" id="countdown"></p>
+
+    <svg class="divider" viewBox="0 0 220 26" fill="none" stroke="currentColor"
+         stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+      <path d="M8 14 Q60 10 110 13 Q160 16 212 12"/>
+      <path d="M46 13 Q42 6 35 4  M46 13 Q40 8 33 8" stroke-width="1.1"/>
+      <path d="M80 12 Q84 19 92 21 M80 12 Q86 17 94 17" stroke-width="1.1"/>
+      <path d="M132 14 Q128 7 121 5 M132 14 Q126 9 119 9" stroke-width="1.1"/>
+      <path d="M168 13 Q172 20 180 22 M168 13 Q174 18 182 18" stroke-width="1.1"/>
+      <circle cx="110" cy="13" r="2" fill="currentColor" stroke="none"/>
+    </svg>
+
+    <p class="deadline" data-i18n="deadline"></p>
+  </section>
+
+  <!-- ================= DETAILS ================= -->
+  <section class="details">
+    <div class="detail-addr">
+      <p class="d-label" data-i18n="d_addr"></p>
+      <p class="d-value">Evenementen &amp; Partycentrum Royal
+        <small>Schaluinen 11A, 5111 HB Baarle-Nassau</small>
+      </p>
+      <div class="btn-row">
+        <button type="button" class="maps-btn" onclick="openChooser('maps')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/>
+            <circle cx="12" cy="10" r="2.6"/>
+          </svg>
+          <span data-i18n="d_maps"></span>
+        </button>
+        <button type="button" class="maps-btn" onclick="openChooser('cal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2"/>
+            <path d="M16 3v4M8 3v4M3 11h18M12 15v4M10 17h4"/>
+          </svg>
+          <span data-i18n="d_cal"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RSVP ================= -->
+  <section class="rsvp" id="rsvp">
+    <h2 data-i18n="r_title"></h2>
+    <div class="card">
+      <div class="field">
+        <label for="mainName"><span data-i18n="f_name"></span> <span class="req">*</span></label>
+        <input type="text" id="mainName" autocomplete="name" data-i18n-ph="f_name_ph">
+      </div>
+
+      <div class="field">
+        <p class="f-label"><span data-i18n="f_attend"></span> <span class="req">*</span></p>
+        <div class="seg" role="group">
+          <button type="button" id="attYes" data-i18n="yes" onclick="setAttend('yes')"></button>
+          <button type="button" id="attNo" data-i18n="no" onclick="setAttend('no')"></button>
+        </div>
+      </div>
+
+      <div id="attendExtra" class="hidden">
+        <div class="field">
+          <p class="f-label" data-i18n="f_guests"></p>
+          <button type="button" class="guest-btn" onclick="openGuests()">
+            <span data-i18n="f_guests_btn"></span>
+            <span class="guest-count" id="guestCount">–</span>
+          </button>
+        </div>
+
+        <div class="field">
+          <p class="f-label" data-i18n="f_baby"></p>
+          <div class="stepper">
+            <button type="button" onclick="stepBaby(-1)" aria-label="−">−</button>
+            <span class="num" id="babyNum">0</span>
+            <button type="button" onclick="stepBaby(1)" aria-label="+">+</button>
+          </div>
+          <span class="hint" data-i18n="f_baby_hint"></span>
+        </div>
+
+        <div class="field">
+          <p class="f-label"><span data-i18n="f_transport"></span> <span class="req">*</span></p>
+          <div class="seg" role="group">
+            <button type="button" id="trYes" data-i18n="yes" onclick="setTransport('yes')"></button>
+            <button type="button" id="trNo" data-i18n="no" onclick="setTransport('no')"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="message" data-i18n="f_msg"></label>
+        <textarea id="message" rows="3" data-i18n-ph="f_msg_ph"></textarea>
+      </div>
+
+      <!-- honeypot: gerçek misafirler görmez, botlar doldurur -->
+      <div class="hp" aria-hidden="true">
+        <label>Website</label>
+        <input type="text" id="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <p class="form-error" id="formError"></p>
+      <button type="button" class="primary" onclick="openPreview()" data-i18n="f_preview"></button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <svg class="divider" viewBox="0 0 220 26" fill="none" stroke="currentColor"
+       stroke-width="1.4" stroke-linecap="round" aria-hidden="true" style="color:var(--line)">
+    <path d="M8 14 Q60 10 110 13 Q160 16 212 12"/>
+    <path d="M80 12 Q84 19 92 21 M80 12 Q86 17 94 17" stroke-width="1.1"/>
+    <path d="M132 14 Q128 7 121 5 M132 14 Q126 9 119 9" stroke-width="1.1"/>
+    <circle cx="110" cy="13" r="2" fill="currentColor" stroke="none"/>
+  </svg>
+  <p class="names-sm">Sinem &amp; Ahmet</p>
+  <p class="f-date">20.08.2026</p>
+</footer>
+
+<!-- ================= CHOOSER (harita / takvim) ================= -->
+<div class="overlay hidden" id="chooserModal" role="dialog" aria-modal="true">
+  <div class="panel chooser-panel">
+    <button class="x" onclick="closeChooser()" aria-label="Kapat">×</button>
+    <h3 id="chooserTitle"></h3>
+    <div id="chooserList"></div>
+  </div>
+</div>
+
+<!-- ================= GUEST MODAL ================= -->
+<div class="overlay hidden" id="guestModal" role="dialog" aria-modal="true">
+  <div class="panel">
+    <button class="x" onclick="closeGuests()" aria-label="Kapat">×</button>
+    <h3 data-i18n="g_title"></h3>
+    <p class="hint g-note" data-i18n="g_note"></p>
+    <div id="guestRows"></div>
+    <button type="button" class="g-add" onclick="addRow()" data-i18n="g_add"></button>
+    <p class="form-error" id="guestError"></p>
+    <div class="actions">
+      <button type="button" class="ghost" onclick="closeGuests()" data-i18n="g_cancel"></button>
+      <button type="button" class="primary" onclick="saveGuests()" data-i18n="g_save"></button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PREVIEW ================= -->
+<div class="overlay hidden" id="previewModal" role="dialog" aria-modal="true">
+  <div class="panel">
+    <h3 data-i18n="p_title"></h3>
+    <div class="sum" id="summary"></div>
+    <p class="form-error" id="sendError"></p>
+    <div class="actions">
+      <button type="button" class="ghost" onclick="closePreview()" data-i18n="p_edit"></button>
+      <button type="button" class="primary" id="sendBtn" onclick="submitForm()" data-i18n="p_send"></button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= THANK YOU ================= -->
+<div class="overlay hidden" id="thanksModal" role="dialog" aria-modal="true">
+  <div class="panel thanks-panel">
+    <svg class="gazebo" viewBox="0 0 120 120" fill="none" stroke="var(--line)"
+         stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="60" cy="14" r="2.6"/><path d="M60 17 L60 24"/>
+      <path d="M23 52 Q28 30 60 25 Q92 30 97 52"/>
+      <path d="M20 52 L100 52"/><path d="M23 57 L97 57" stroke-width="1.1"/>
+      <path d="M30 57 L30 96"/><path d="M50 57 L50 96"/>
+      <path d="M70 57 L70 96"/><path d="M90 57 L90 96"/>
+      <path d="M24 97 L96 97"/><path d="M18 103 L102 103"/>
+    </svg>
+    <h3 id="thanksTitle"></h3>
+    <p id="thanksText"></p>
+    <p class="names-sm">Sinem &amp; Ahmet</p>
+  </div>
+</div>
+
+<script>
+/* ayarlar */
+const CONFIG = {
+  // Google Apps Script web app adresi:
+  SCRIPT_URL: "",
+  MAPS_URL: "https://www.google.com/maps/place/Party+Centrum+Royal/@51.4238543,4.9320892,17z/data=!3m1!4b1!4m6!3m5!1s0x47c6babd0fa853cb:0xd7ca0a3075d330ee!8m2!3d51.423851!4d4.9346641!16s%2Fg%2F11cp7k63mk",
+  DATE: "20.08.2026",
+  TIME: "16.00",
+  // "Takvime Ekle" için başlangıç/bitiş (UTC; 16.00–23.00 Hollanda yaz saati).
+  ICS_START: "20260820T140000Z",
+  ICS_END:   "20260820T210000Z",
+  // harita seçenekleri (koordinat: 51.423851, 4.9346641)
+  MAPS_APPLE: "https://maps.apple.com/?q=Party%20Centrum%20Royal&ll=51.423851,4.9346641",
+  MAPS_WAZE:  "https://waze.com/ul?ll=51.423851,4.9346641&navigate=yes",
+};
+
+/* metinler - TR & NL */
+const I18N = {
+  tr: {
+    deadline: "Yanıtınızı 19 Temmuz'a kadar bekliyoruz.",
+    d_addr: "Adres", d_maps: "Yol Tarifi", d_cal: "Takvime Ekle",
+    opt_gcal: "Google Takvim", opt_acal: "Apple Takvim",
+    cal_summary: "Sinem & Ahmet — Düğün",
+    countdown: "Düğüne {n} gün", countdown_1: "Düğüne 1 gün",
+    countdown_today: "Bugün! 🌿",
+    r_title: "Katılımınızı Bildirin",
+    f_name: "İsim Soyisim", f_name_ph: "Adınız ve soyadınız",
+    f_attend: "Düğünümüze katılıyor musunuz?",
+    yes: "Evet", no: "Hayır",
+    f_guests: "Misafirler",
+    f_guests_btn: "Misafir listesi",
+    count_one: "1 kişi", count_many: "{n} kişi",
+    f_baby: "Eklediğiniz misafirlerden kaçı bebek?",
+    f_baby_hint: "Kucakta oturacak, ayrı sandalye gerektirmeyen bebekler",
+    e_baby: "Bebek sayısı misafir sayısından fazla olamaz.",
+    g_note: "Bebekler dahil, gelecek herkesi ekleyin.",
+    p_calc: "Özet",
+    w_guest: ["misafir", "misafir"],
+    w_baby: ["bebek", "bebek"],
+    w_chair: ["sandalye", "sandalye"],
+    f_transport: "Ulaşımınızı kendiniz sağlayabiliyor musunuz?",
+    f_msg: "Çifte notunuz (isteğe bağlı)",
+    f_msg_ph: "Dilerseniz bize birkaç söz bırakın...",
+    f_preview: "Önizle",
+    g_title: "Misafir Listesi", g_you: "(siz)",
+    g_add: "+ Kişi ekle", g_save: "Kaydet", g_cancel: "Vazgeç",
+    g_ph: "İsim soyisim",
+    g_err_empty: "Lütfen boş isim satırlarını doldurun veya silin.",
+    e_name: "Lütfen isminizi yazın.",
+    e_name_first: "Önce isminizi yazın, ardından misafir listesini açabilirsiniz.",
+    e_attend: "Lütfen katılım durumunuzu seçin.",
+    e_transport: "Lütfen ulaşım sorusunu yanıtlayın.",
+    p_title: "Önizleme",
+    p_attend: "Katılım", p_guests: "Misafirler", p_baby: "Bebek",
+    p_transport: "Ulaşım", p_msg: "Notunuz",
+    p_yes: "Evet, katılıyoruz 🌿", p_no: "Maalesef katılamıyoruz",
+    p_tr_yes: "Kendimiz sağlıyoruz", p_tr_no: "Yardıma ihtiyacımız olabilir",
+    p_edit: "Düzenle", p_send: "Onayla ve Gönder", p_sending: "Gönderiliyor…",
+    e_send: "Gönderilemedi, lütfen tekrar deneyin.",
+    e_noscript: "Gönderim adresi henüz ayarlanmadı (KURULUM.md → Adım 2).",
+    t_yes_h: "Cevabınız alındı ✓",
+    t_yes_p: "En kısa sürede güzel anılarda buluşmak dileğiyle.",
+    t_no_h: "Teşekkürler 🤍",
+    t_no_p: "Birlikte olamasak da, güzel dileklerinizi kalbimizde taşıyacağız.",
+  },
+  nl: {
+    deadline: "Wij ontvangen uw antwoord graag vóór 19 juli.",
+    d_addr: "Adres", d_maps: "Routebeschrijving", d_cal: "Zet in agenda",
+    opt_gcal: "Google Agenda", opt_acal: "Apple Agenda",
+    cal_summary: "Bruiloft Sinem & Ahmet",
+    countdown: "Nog {n} dagen", countdown_1: "Nog 1 dag",
+    countdown_today: "Vandaag! 🌿",
+    r_title: "Laat het ons weten",
+    f_name: "Voor- en achternaam", f_name_ph: "Uw voor- en achternaam",
+    f_attend: "Bent u aanwezig op onze bruiloft?",
+    yes: "Ja", no: "Nee",
+    f_guests: "Gasten",
+    f_guests_btn: "Gastenlijst",
+    count_one: "1 persoon", count_many: "{n} personen",
+    f_baby: "Hoeveel van uw gasten zijn baby's?",
+    f_baby_hint: "Baby's op schoot, zonder eigen stoel",
+    e_baby: "Het aantal baby's kan niet groter zijn dan het aantal gasten.",
+    g_note: "Voeg iedereen toe die meekomt, inclusief baby's.",
+    p_calc: "Overzicht",
+    w_guest: ["gast", "gasten"],
+    w_baby: ["baby", "baby's"],
+    w_chair: ["stoel", "stoelen"],
+    f_transport: "Regelt u uw eigen vervoer?",
+    f_msg: "Een berichtje voor het bruidspaar (optioneel)",
+    f_msg_ph: "Laat gerust een paar woorden achter...",
+    f_preview: "Voorbeeld",
+    g_title: "Gastenlijst", g_you: "(u)",
+    g_add: "+ Gast toevoegen", g_save: "Opslaan", g_cancel: "Annuleren",
+    g_ph: "Voor- en achternaam",
+    g_err_empty: "Vul de lege naamvelden in of verwijder ze.",
+    e_name: "Vul uw naam in.",
+    e_name_first: "Vul eerst uw naam in, daarna kunt u de gastenlijst openen.",
+    e_attend: "Geef aan of u aanwezig bent.",
+    e_transport: "Beantwoord de vervoersvraag.",
+    p_title: "Voorbeeld",
+    p_attend: "Aanwezigheid", p_guests: "Gasten", p_baby: "Baby",
+    p_transport: "Vervoer", p_msg: "Uw bericht",
+    p_yes: "Ja, wij zijn erbij 🌿", p_no: "Helaas kunnen wij er niet bij zijn",
+    p_tr_yes: "Wij regelen eigen vervoer", p_tr_no: "Wij hebben mogelijk hulp nodig",
+    p_edit: "Bewerken", p_send: "Bevestigen en versturen", p_sending: "Versturen…",
+    e_send: "Versturen is mislukt, probeer het opnieuw.",
+    e_noscript: "Verzendadres is nog niet ingesteld (KURULUM.md → stap 2).",
+    t_yes_h: "Uw antwoord is ontvangen ✓",
+    t_yes_p: "We kijken ernaar uit om samen mooie herinneringen te maken.",
+    t_no_h: "Dank u wel 🤍",
+    t_no_p: "Ook al kunnen we er niet samen zijn, uw lieve wensen dragen we in ons hart.",
+  }
+};
+
+/* DURUM */
+const state = {
+  lang: "tr",
+  attending: null,   // 'yes' | 'no'
+  transport: null,   // 'yes' | 'no'
+  extraGuests: [],   // ana kişi hariç, kaydedilmiş isimler
+  babies: 0,
+};
+const $ = id => document.getElementById(id);
+const t = key => I18N[state.lang][key];
+
+/* dil */
+function setLang(l){
+  state.lang = l;
+  document.documentElement.lang = l;
+  $("langTR").classList.toggle("on", l === "tr");
+  $("langNL").classList.toggle("on", l === "nl");
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    el.textContent = t(el.dataset.i18n);
+  });
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => {
+    el.placeholder = t(el.dataset.i18nPh);
+  });
+  renderCount();
+  renderCountdown();
+  $("formError").textContent = "";
+  $("guestError").textContent = "";
+}
+
+/* geri sayım */
+function renderCountdown(){
+  const [d, m, y] = CONFIG.DATE.split(".").map(Number);
+  const target = new Date(y, m - 1, d);
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const days = Math.round((target - today) / 86400000);
+  const el = $("countdown");
+  if(days > 1)       el.textContent = t("countdown").replace("{n}", days);
+  else if(days === 1) el.textContent = t("countdown_1");
+  else if(days === 0) el.textContent = t("countdown_today");
+  else el.textContent = "";
+}
+
+/* harita / takvim seçici */
+const VENUE = "Evenementen & Partycentrum Royal, Schaluinen 11A, 5111 HB Baarle-Nassau";
+function openChooser(kind){
+  const list = $("chooserList");
+  list.innerHTML = "";
+  const opts = kind === "maps" ? [
+    { label: "Google Maps", href: CONFIG.MAPS_URL },
+    { label: "Apple Maps",  href: CONFIG.MAPS_APPLE },
+    { label: "Waze",        href: CONFIG.MAPS_WAZE },
+  ] : [
+    { label: t("opt_gcal"), href: gcalURL() },
+    { label: t("opt_acal"), action: downloadICS },
+    { label: "Outlook",     href: outlookURL() },
+  ];
+  $("chooserTitle").textContent = kind === "maps" ? t("d_maps") : t("d_cal");
+  opts.forEach(o => {
+    let el;
+    if(o.href){
+      el = document.createElement("a");
+      el.href = o.href; el.target = "_blank"; el.rel = "noopener";
+      el.addEventListener("click", closeChooser);
+    } else {
+      el = document.createElement("button");
+      el.type = "button";
+      el.onclick = () => { o.action(); closeChooser(); };
+    }
+    el.className = "opt";
+    el.textContent = o.label;
+    list.appendChild(el);
+  });
+  $("chooserModal").classList.remove("hidden");
+}
+function closeChooser(){ $("chooserModal").classList.add("hidden"); }
+
+function gcalURL(){
+  return "https://calendar.google.com/calendar/render?action=TEMPLATE"
+    + "&text=" + encodeURIComponent(t("cal_summary"))
+    + "&dates=" + CONFIG.ICS_START + "/" + CONFIG.ICS_END
+    + "&location=" + encodeURIComponent(VENUE)
+    + "&details=" + encodeURIComponent(location.href.split("#")[0]);
+}
+function outlookURL(){
+  const iso = s => s.replace(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/, "$1-$2-$3T$4:$5:$6Z");
+  return "https://outlook.live.com/calendar/0/deeplink/compose?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent"
+    + "&subject=" + encodeURIComponent(t("cal_summary"))
+    + "&startdt=" + iso(CONFIG.ICS_START) + "&enddt=" + iso(CONFIG.ICS_END)
+    + "&location=" + encodeURIComponent(VENUE);
+}
+
+/* takvime ekle (.ics — Apple) */
+function downloadICS(){
+  const ics = [
+    "BEGIN:VCALENDAR", "VERSION:2.0",
+    "PRODID:-//Sinem & Ahmet//Dugun//TR",
+    "BEGIN:VEVENT",
+    "UID:sinem-ahmet-20260820@dugun",
+    "DTSTAMP:" + new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z",
+    "DTSTART:" + CONFIG.ICS_START,
+    "DTEND:" + CONFIG.ICS_END,
+    "SUMMARY:" + t("cal_summary"),
+    "LOCATION:Evenementen & Partycentrum Royal\\, Schaluinen 11A\\, 5111 HB Baarle-Nassau",
+    "URL:" + location.href.split("#")[0],
+    "END:VEVENT", "END:VCALENDAR"
+  ].join("\r\n");
+  const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "sinem-ahmet-dugun.ics";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
+
+/* katılım */
+function setAttend(v){
+  state.attending = v;
+  $("attYes").classList.toggle("on", v === "yes");
+  $("attNo").classList.toggle("on", v === "no");
+  $("attendExtra").classList.toggle("hidden", v !== "yes");
+  $("formError").textContent = "";
+}
+function setTransport(v){
+  state.transport = v;
+  $("trYes").classList.toggle("on", v === "yes");
+  $("trNo").classList.toggle("on", v === "no");
+  $("formError").textContent = "";
+}
+
+/* bebek (kural: bebek ≤ misafir) */
+function stepBaby(d){
+  state.babies = Math.min(totalGuests(), Math.max(0, state.babies + d));
+  $("babyNum").textContent = state.babies;
+}
+function clampBabies(){
+  if(state.babies > totalGuests()){
+    state.babies = totalGuests();
+    $("babyNum").textContent = state.babies;
+  }
+}
+
+/* misafir sayacı */
+function totalGuests(){
+  return ($("mainName").value.trim() ? 1 : 0) + state.extraGuests.length;
+}
+function renderCount(){
+  clampBabies();
+  const n = totalGuests();
+  $("guestCount").textContent =
+    n === 0 ? "–" : (n === 1 ? t("count_one") : t("count_many").replace("{n}", n));
+}
+$("mainName").addEventListener("input", renderCount);
+
+/* misafir modalı */
+function openGuests(){
+  const name = $("mainName").value.trim();
+  if(!name){
+    $("formError").textContent = t("e_name_first");
+    $("mainName").focus();
+    return;
+  }
+  $("guestError").textContent = "";
+  const box = $("guestRows");
+  box.innerHTML = "";
+  box.appendChild(makeRow(name, true));
+  state.extraGuests.forEach(g => box.appendChild(makeRow(g, false)));
+  if(state.extraGuests.length === 0) box.appendChild(makeRow("", false));
+  renumber();
+  $("guestModal").classList.remove("hidden");
+}
+function makeRow(value, locked){
+  const row = document.createElement("div");
+  row.className = "g-row";
+  const idx = document.createElement("span");
+  idx.className = "g-idx";
+  const input = document.createElement("input");
+  input.type = "text";
+  input.value = value;
+  input.placeholder = t("g_ph");
+  if(locked){
+    input.disabled = true;
+    const you = document.createElement("span");
+    you.className = "g-you";
+    you.textContent = t("g_you");
+    row.append(idx, input, you);
+  } else {
+    const del = document.createElement("button");
+    del.type = "button";
+    del.className = "g-del";
+    del.textContent = "−";
+    del.setAttribute("aria-label", "Sil / Verwijderen");
+    del.onclick = () => { row.remove(); renumber(); };
+    row.append(idx, input, del);
+  }
+  return row;
+}
+function renumber(){
+  document.querySelectorAll("#guestRows .g-idx")
+    .forEach((el, i) => el.textContent = (i + 1) + ".");
+}
+function addRow(){
+  $("guestRows").appendChild(makeRow("", false));
+  renumber();
+  const inputs = document.querySelectorAll("#guestRows input:not(:disabled)");
+  if(inputs.length) inputs[inputs.length - 1].focus();
+}
+function saveGuests(){
+  const inputs = [...document.querySelectorAll("#guestRows input:not(:disabled)")];
+  let bad = false;
+  inputs.forEach(i => {
+    const empty = !i.value.trim();
+    i.classList.toggle("bad", empty);
+    if(empty) bad = true;
+  });
+  if(bad){
+    $("guestError").textContent = t("g_err_empty");
+    return;
+  }
+  state.extraGuests = inputs.map(i => i.value.trim());
+  $("guestModal").classList.add("hidden");
+  renderCount();
+}
+function closeGuests(){ $("guestModal").classList.add("hidden"); }
+
+/* önizleme */
+function openPreview(){
+  const err = $("formError");
+  const name = $("mainName").value.trim();
+  if(!name){ err.textContent = t("e_name"); $("mainName").focus(); return; }
+  if(!state.attending){ err.textContent = t("e_attend"); return; }
+  if(state.attending === "yes" && !state.transport){
+    err.textContent = t("e_transport"); return;
+  }
+  err.textContent = "";
+  $("sendError").textContent = "";
+
+  const rows = [];
+  rows.push(sumRow(t("p_attend"), state.attending === "yes" ? t("p_yes") : t("p_no")));
+  if(state.attending === "yes"){
+    const names = [name + " " + t("g_you"), ...state.extraGuests];
+    if(state.babies > names.length){
+      err.textContent = t("e_baby"); return;
+    }
+    const list = "<ol>" + names.map(n => "<li>" + esc(n) + "</li>").join("") + "</ol>";
+    rows.push(sumRow(t("p_guests") + " · " +
+      (names.length === 1 ? t("count_one") : t("count_many").replace("{n}", names.length)),
+      list, true));
+    rows.push(sumRow(t("p_calc"), calcLine(names.length, state.babies)));
+    rows.push(sumRow(t("p_transport"),
+      state.transport === "yes" ? t("p_tr_yes") : t("p_tr_no")));
+  }
+  const msg = $("message").value.trim();
+  if(msg) rows.push(sumRow(t("p_msg"), esc(msg)));
+
+  $("summary").innerHTML = rows.join("");
+  $("previewModal").classList.remove("hidden");
+}
+function calcLine(guests, babies){
+  const w = (n, key) => n + " " + t(key)[n === 1 ? 0 : 1];
+  const chairs = guests - babies;
+  const parts = [w(guests, "w_guest")];
+  if(babies > 0) parts.push(w(babies, "w_baby"));
+  parts.push(w(chairs, "w_chair"));
+  return parts.join(" · ");
+}
+function sumRow(label, value, raw){
+  return '<div class="sum-item"><p class="sum-l">' + esc(label) +
+         '</p><div class="sum-v">' + (raw ? value : esc(value)) + "</div></div>";
+}
+function esc(s){
+  return s.replace(/[&<>"']/g, c =>
+    ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function closePreview(){ $("previewModal").classList.add("hidden"); }
+
+/* gönderim */
+async function submitForm(){
+  if(!CONFIG.SCRIPT_URL){
+    $("sendError").textContent = t("e_noscript");
+    return;
+  }
+  const btn = $("sendBtn");
+  btn.disabled = true;
+  btn.textContent = t("p_sending");
+
+  const name = $("mainName").value.trim();
+  const attendingYes = state.attending === "yes";
+  const names = attendingYes ? [name, ...state.extraGuests] : [];
+  const body = new URLSearchParams({
+    mainName: name,
+    attending: attendingYes ? "Evet" : "Hayır",
+    guestCount: attendingYes ? String(names.length) : "0",
+    guests: names.join(" | "),
+    babies: attendingYes ? String(state.babies) : "0",
+    chairs: attendingYes ? String(names.length - state.babies) : "0",
+    transport: attendingYes
+      ? (state.transport === "yes" ? "Kendisi" : "Yardım gerekli") : "",
+    message: $("message").value.trim(),
+    lang: state.lang,
+    website: $("website").value, // honeypot
+  });
+
+  try{
+    await fetch(CONFIG.SCRIPT_URL, { method: "POST", mode: "no-cors", body });
+    $("previewModal").classList.add("hidden");
+    $("thanksTitle").textContent = attendingYes ? t("t_yes_h") : t("t_no_h");
+    $("thanksText").textContent  = attendingYes ? t("t_yes_p") : t("t_no_p");
+    $("thanksModal").classList.remove("hidden");
+  }catch(e){
+    $("sendError").textContent = t("e_send");
+  }finally{
+    btn.disabled = false;
+    btn.textContent = t("p_send");
+  }
+}
+
+/* başlangıç */
+$("evDate").textContent = CONFIG.DATE;
+$("evTime").textContent = CONFIG.TIME;
+document.querySelector("footer .f-date").textContent = CONFIG.DATE;
+setLang("tr");
+</script>
+</body>
+</html>
