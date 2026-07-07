@@ -19,7 +19,7 @@ const I18N = {
     deadline: "Yanıtınızı 19 Temmuz'a kadar bekliyoruz.",
     d_addr: "Adres", d_maps: "Yol Tarifi", d_cal: "Takvime Ekle",
     opt_gcal: "Google Takvim", opt_acal: "Apple Takvim",
-    cal_summary: "Sinem & Ahmet — Düğün",
+    cal_summary: "Sinem & Ahmet Düğün",
     countdown: "Düğüne {n} gün", countdown_1: "Düğüne 1 gün",
     countdown_today: "Bugün! 🌿",
     r_title: "Katılımınızı Bildirin",
